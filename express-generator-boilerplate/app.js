@@ -25,9 +25,6 @@ mongoose
     console.error('Error connecting to mongo', err);
   });
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
 
 // view engine setup
@@ -43,9 +40,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-
+//esto es para req.body(che prendo quello che metto dentro input e parser lo trasforma in oggeto json) in index.js :19
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+
+//indico a la app donde estan mis rutas
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -67,3 +69,6 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+//app.listen(3001, () => console.log('project running on port 3001'));
+//>>NO NEED TO ADD IT >> In: bin/www hay port normalization to 3000 directly o considera quello che scrivo in archivo .env (zb. 3001)
