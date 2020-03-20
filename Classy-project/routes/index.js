@@ -11,6 +11,21 @@ router.get('/', function(req, res, next) {
 
 
 
+
+
+router.get('/home', (req, res, next) => {
+  res.render('landing-page')
+})
+
+
+
+
+
+
+
+
+
+////////////////////////////
 router.get('/book/add', (req, res, next) => {
   res.render("book-add");
 });
